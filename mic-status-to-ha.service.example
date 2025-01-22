@@ -1,0 +1,12 @@
+[Unit]
+Description=Sync microphone status to Home Assistant
+
+[Service]
+Type=simple
+User=linux_user_to_run_the_script
+ExecStart=python3 /path/to/script/mic-status-to-ha.py
+Environment=HA_URL=insert-ha-url-here
+Environment=HA_BEARER_TOKEN=insert-ha-bearer-token-here
+Environment=HA_ENTITY_ID=insert-entity-id-here
+[Install]
+WantedBy=multi-user.target
