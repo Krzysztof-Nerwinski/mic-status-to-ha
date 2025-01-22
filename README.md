@@ -16,9 +16,9 @@ using a REST API call.
 
 To use the provided `mic-status-to-ha.service.example` file, follow these steps:
 
-1. Copy example the file by removing `.example` from its name:
+1. Copy example file by removing `.example` from its name:
    ```bash
-   mv mic-status-to-ha.service.example mic-status-to-ha.service
+   cp mic-status-to-ha.service.example mic-status-to-ha.service
    ```
 
 2. Edit the `mic-status-to-ha.service` file and replace the following:
