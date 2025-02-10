@@ -51,13 +51,13 @@ def get_entity_data(config: Config) -> Optional[dict]:
 
 def change_entity_data(config: Config, updated_state: dict) -> Optional[dict]:
     """Updates the state of the given entity."""
-    request = Request(
-        f"{config.ha_url}/api/states/{config.ha_entity_id}",
-        headers=config.ha_headers,
-        method="POST",
-        data=json.dumps(updated_state).encode("utf-8"),
-    )
     try:
+        request = Request(
+            f"{config.ha_url}/api/states/{config.ha_entity_id}",
+            headers=config.ha_headers,
+            method="POST",
+            data=json.dumps(updated_state).encode("utf-8"),
+        )
         with urlopen(request) as response:
             response_data_str = response.read().decode("utf-8")
     except HTTPException as e:
@@ -82,7 +82,7 @@ def get_names_with_states_from_pa_ctl_stdout(cmd_output: str):
 def get_mic_status(device_name: str) -> bool:
     """Returns True if the mic is active, and False otherwise."""
     try:
-        res = check_output(["/bin/pactl", "list", "sources"], user="krzysztof").decode("utf-8")
+        res = check_output(["/bin/pactl", "list", "sources"]).decode("utf-8")
     except Exception as e:
         logging.error(f"Failed to get mic status: {e}")
         return False
